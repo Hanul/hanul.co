@@ -8,8 +8,23 @@ HanulCo.GooglePaymentsCSV = CLASS({
 
 		let table;
 		let wrapper = DIV({
-			c : [UUI.FULL_UPLOAD_FORM({
+			style : {
+				fontFamily : 'Noto Sans KR',
+				fontSize : 16,
+				padding : '20px 25px'
+			},
+			c : [HEADER({
+				c : [H1({
+					style : {
+						fontSize : 30
+					},
+					c : 'Google Payments CSV Tool'
+				}), P({
+					c : 'Google Payments 에서 제공하는 CSV를 분석하는 툴입니다.'
+				})]
+			}), UUI.FULL_UPLOAD_FORM({
 				style : {
+					marginTop : 15,
 					border : '1px solid #999'
 				},
 				box : HanulCo
