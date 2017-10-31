@@ -5,6 +5,8 @@ HanulCo.IconSplash = CLASS({
 	},
 
 	init : (inner, self) => {
+		
+		let iconSplashRoom = HanulCo.ROOM('iconSplashRoom');
 
 		let table;
 		let wrapper = DIV({
@@ -45,6 +47,10 @@ HanulCo.IconSplash = CLASS({
 					},
 					success : (fileData) => {
 						
+						iconSplashRoom.send({
+							methodName : 'icon',
+							data : fileData.id
+						}, (r) => {console.log(r);});
 					}
 				})]
 			}), DIV({
