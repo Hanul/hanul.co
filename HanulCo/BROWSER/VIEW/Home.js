@@ -39,6 +39,22 @@ HanulCo.Home = CLASS({
 					},
 					c : A({
 						style : COMBINE([itemStyle, {
+							backgroundColor : '#0269E2'
+						}]),
+						c : 'Icon Splash',
+						on : {
+							tap : () => {
+								HanulCo.GO('iconsplash');
+							}
+						}
+					})
+				}), LI({
+					style : {
+						flt : 'left',
+						marginRight : 10
+					},
+					c : A({
+						style : COMBINE([itemStyle, {
 							backgroundColor : '#DE0000'
 						}]),
 						c : 'Reverse Lines',

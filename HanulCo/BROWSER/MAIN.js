@@ -17,6 +17,11 @@ HanulCo.MAIN = METHOD({
 		});
 
 		HanulCo.MATCH_VIEW({
+			uri : 'iconsplash',
+			target : HanulCo.IconSplash
+		});
+
+		HanulCo.MATCH_VIEW({
 			uri : 'reverselines',
 			target : HanulCo.ReverseLines
 		});
