@@ -6,7 +6,7 @@ HanulCo.GooglePaymentsCSV = CLASS({
 
 	init : (inner, self) => {
 
-		let table;
+		let result;
 		let wrapper = DIV({
 			style : {
 				fontFamily : 'Noto Sans KR',
@@ -20,7 +20,7 @@ HanulCo.GooglePaymentsCSV = CLASS({
 					},
 					c : 'Google Payments CSV Tool'
 				}), P({
-					c : 'Google Payments 에서 제공하는 CSV를 분석하는 툴입니다.'
+					c : '정산 작업을 위해 Google Payments 에서 제공하는 CSV를 분석하는 툴입니다.'
 				})]
 			}), UUI.FULL_UPLOAD_FORM({
 				style : {
@@ -34,9 +34,10 @@ HanulCo.GooglePaymentsCSV = CLASS({
 				},
 				success : (fileData, form) => {
 					
-					table.empty();
-					
 					GET('__RF/HanulCo/' + fileData.id, (content) => {
+						
+						let str = '';
+						let line = 0;
 						
 						let array = [];
 						
@@ -45,19 +46,8 @@ HanulCo.GooglePaymentsCSV = CLASS({
 							let split = line.split(',');
 							
 							if (i === 0) {
-								table.append(TR({
-									c : [TH({
-										c : '일자'
-									}), TH({
-										c : '이름'
-									}), TH({
-										c : '국가'
-									}), TH({
-										c : '종류'
-									}), TH({
-										c : '액수 (원)'
-									})]
-								}));
+								str += '일자\t이름\t국가\t종류\t액수 (원)';
+								line += 1;
 							}
 							
 							else if (isNaN(split[0]) === true) {
@@ -73,27 +63,30 @@ HanulCo.GooglePaymentsCSV = CLASS({
 						
 						EACH(array, (split, i) => {
 							
-							table.append(TR({
-								c : [TD({
-									c : (split[1] + split[2] + ' ' + split[3]).replace(/"/g, '')
-								}), TD({
-									c : split[7]
-								}), TD({
-									c : split[12]
-								}), TD({
-									c : split[5]
-								}), TD({
-									c : isNaN(split[19]) === true ? split[20] : split[19]
-								})]
-							}));
+							str += '\n';
+							str += (split[1] + split[2] + ' ' + split[3]).replace(/"/g, '') + '\t';
+							str += split[7] + '\t';
+							str += split[12] + '\t';
+							str += split[5] + '\t';
+							str += (isNaN(split[19]) === true ? split[20] : split[19]);
 							
 							total += REAL(isNaN(split[19]) === true ? split[20] : split[19]);
+							
+							line += 1;
 						});
 						
-						table.append(total);
+						result.setValue(str);
+						
+						result.addStyle({
+							height : (line + 1) * 24
+						});
 					});
 				}
-			}), table = TABLE()]
+			}), result = UUI.FULL_TEXTAREA({
+				style : {
+					marginTop : 15
+				}
+			})]
 		}).appendTo(BODY);
 
 		inner.on('close', () => {
