@@ -1,0 +1,1 @@
+HanulCo.IconSizeMap={mdpi:48,hdpi:72,xhdpi:96,xxhdpi:144,xxxhdpi:192,GooglePlayStore:512};
