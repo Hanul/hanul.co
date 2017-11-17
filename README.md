@@ -1,7 +1,7 @@
 # hanul.co
 Hanul's Components
 
-## Icon Splash
+## Icon Launch
 이미지 하나로 앱 아이콘과 스플래시 화면을 생성해주는 툴입니다. (iOS, Android)
 
 ### 생성되는 앱 아이콘 크기 종류
@@ -20,7 +20,9 @@ Hanul's Components
 - 192 × 192 (xxxhdpi)
 - 512 × 512 (Google Play Store)
 
-### 생성되는 스플래시 화면 크기 종류
+### 생성되는 Launch Screen 크기 종류
+***안드로이드는 Launch Screen을 지원하지 않습니다.***
+
 #### iOS
 - 320 × 480 (iPhone Non-Retina)
 - 640 × 960 (iPhone Retina)
@@ -32,14 +34,6 @@ Hanul's Components
 - 1536 × 2048 (iPad Retina)
 - 1668 × 2224 (10.5" iPad Pro)
 - 2048 × 2732 (12.9" iPad Pro)
-
-#### Android
-- 200 × 320 (ldpi)
-- 320 × 480 (mdpi)
-- 480 × 800 (hdpi)
-- 720 × 1280 (xhdpi)
-- 960 × 1600 (xxhdpi)
-- 1280 × 1920 (xxxhdpi)
 
 ## Reverse Lines
 여러 문자열의 순서를 역순으로 변환하는 툴입니다.

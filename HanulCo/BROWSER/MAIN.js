@@ -17,8 +17,8 @@ HanulCo.MAIN = METHOD({
 		});
 
 		HanulCo.MATCH_VIEW({
-			uri : 'iconsplash',
-			target : HanulCo.IconSplash
+			uri : 'iconlaunch',
+			target : HanulCo.IconLaunch
 		});
 
 		HanulCo.MATCH_VIEW({

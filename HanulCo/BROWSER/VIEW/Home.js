@@ -41,10 +41,10 @@ HanulCo.Home = CLASS({
 						style : COMBINE([itemStyle, {
 							backgroundColor : '#0269E2'
 						}]),
-						c : 'Icon Splash',
+						c : 'Icon Launch',
 						on : {
 							tap : () => {
-								HanulCo.GO('iconsplash');
+								HanulCo.GO('iconlaunch');
 							}
 						}
 					})
