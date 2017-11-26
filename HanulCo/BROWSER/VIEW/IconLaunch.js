@@ -57,7 +57,14 @@ HanulCo.IconLaunch = CLASS({
 							let totalCount = 0;
 							let doneCount = 0;
 							
-							EACH(['mdpi', 'hdpi', 'xhdpi', 'xxhdpi', 'xxxhdpi', 'GooglePlayStore'], (type) => {
+							EACH([
+								'mdpi',
+								'hdpi',
+								'xhdpi',
+								'xxhdpi',
+								'xxxhdpi',
+								'GooglePlayStore'
+							], (type) => {
 								totalCount += 1;
 								
 								let folder;
@@ -138,6 +145,78 @@ HanulCo.IconLaunch = CLASS({
 									}
 								};
 							});
+							
+							EACH([
+								'iPhoneNotification2x',
+								'iPhoneNotification3x',
+								'iPhoneSettings2x',
+								'iPhoneSettings3x',
+								'iPhoneSpotlight2x',
+								'iPhoneSpotlight3x',
+								'iPhoneApp2x',
+								'iPhoneApp3x',
+								'iPadNotification1x',
+								'iPadNotification2x',
+								'iPadSettings1x',
+								'iPadSettings2x',
+								'iPadSpotlight1x',
+								'iPadSpotlight2x',
+								'iPadApp1x',
+								'iPadApp2x',
+								'iPadProApp2x',
+								'AppStore'
+							], (type) => {
+								totalCount += 1;
+								
+								let folder;
+								if (type !== 'AppStore') {
+									folder = zip.folder('AppIcon');
+								}
+								
+								let img = new Image();
+								img.src = HanulCo.RF(fileData.id + '-' + type + '.png');
+								img.onload = () => {
+									
+									let canvas = CANVAS({
+										width : img.width,
+										height : img.height
+									}).appendTo(BODY);
+									canvas.hide();
+									
+									let size = img.width;
+									
+									let context = canvas.getContext('2d');
+									context.drawImage(img, 0, 0, size, size);
+									
+									if (type === 'AppStore') {
+										
+										let dataURL = canvas.getDataURL();
+										zip.file('AppStore.png', dataURL.substring(dataURL.indexOf('base64,') + 7), {
+											base64 : true
+										});
+										canvas.remove();
+									}
+									
+									else {
+										
+										let dataURL = canvas.getDataURL();
+										folder.file(type + '.png', dataURL.substring(dataURL.indexOf('base64,') + 7), {
+											base64 : true
+										});
+										canvas.remove();
+									}
+									
+									doneCount += 1;
+									
+									if (totalCount === doneCount) {
+										zip.generateAsync({
+											type : 'blob'
+										}) .then((content) => {
+											saveAs(content, 'icons.zip');
+										});
+									}
+								};
+							});
 						});
 					}
 				})]
@@ -149,9 +228,9 @@ HanulCo.IconLaunch = CLASS({
 					style : {
 						fontSize : 20
 					},
-					c : 'Launch Screen 생성'
+					c : 'Launch 이미지 생성'
 				}), P({
-					c : '최대한 큰 Launch Screen 이미지를 선택해주세요. (현재 작동 불가)'
+					c : '최대한 큰 Launch 이미지를 선택해주세요.'
 				}), UUI.FULL_UPLOAD_FORM({
 					style : {
 						marginTop : 10,
@@ -164,6 +243,52 @@ HanulCo.IconLaunch = CLASS({
 					},
 					success : (fileData) => {
 						
+						iconLaunchRoom.send({
+							methodName : 'launchImage',
+							data : fileData.id
+						}, () => {
+							
+							let zip = new JSZip();
+							
+							let totalCount = 0;
+							let doneCount = 0;
+							
+							EACH(HanulCo.LaunchImageMap, (size, type) => {
+								totalCount += 1;
+								
+								let img = new Image();
+								img.src = HanulCo.RF(fileData.id + '-' + type + '.png');
+								img.onload = () => {
+									
+									let canvas = CANVAS({
+										width : img.width,
+										height : img.height
+									}).appendTo(BODY);
+									canvas.hide();
+									
+									let size = img.width;
+									
+									let context = canvas.getContext('2d');
+									context.drawImage(img, 0, 0, img.width, img.height);
+									
+									let dataURL = canvas.getDataURL();
+									zip.file(type + '.png', dataURL.substring(dataURL.indexOf('base64,') + 7), {
+										base64 : true
+									});
+									canvas.remove();
+									
+									doneCount += 1;
+									
+									if (totalCount === doneCount) {
+										zip.generateAsync({
+											type : 'blob'
+										}) .then((content) => {
+											saveAs(content, 'launchimages.zip');
+										});
+									}
+								};
+							});
+						});
 					}
 				})]
 			})]
