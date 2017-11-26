@@ -17,12 +17,12 @@ HanulCo.LaunchImageMap = {
 	
 	iPhone2x : {
 		width : 640,
-		height : 1136
+		height : 960
 	},
 	
 	iPhoneRetina4 : {
 		width : 640,
-		height : 960
+		height : 1136
 	},
 	
 	iPad1x : {
