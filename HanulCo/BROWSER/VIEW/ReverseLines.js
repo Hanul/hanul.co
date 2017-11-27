@@ -53,6 +53,22 @@ HanulCo.ReverseLines = CLASS({
 						}
 					}
 				})]
+			}), DIV({
+				style : {
+					marginTop : 20
+				},
+				c : A({
+					style : {
+						color : '#3399FF',
+						textDecoration : 'underline'
+					},
+					c : 'hanul.co로 돌아가기',
+					on : {
+						tap : () => {
+							HanulCo.GO('');
+						}
+					}
+				})
 			})]
 		}).appendTo(BODY);
 
