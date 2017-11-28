@@ -22,7 +22,7 @@ HanulCo.IconLaunch = CLASS({
 					},
 					c : 'Icon Launch'
 				}), P({
-					c : '이미지 하나로 앱 아이콘과 Launch Screen을 생성해주는 툴입니다. (현재는 Android만 가능합니다.)'
+					c : '이미지 하나로 여러 앱 아이콘들과 아이폰 용 Launch 이미지를 생성해주는 툴입니다.'
 				})]
 			}), DIV({
 				style : {
