@@ -30,5 +30,10 @@ HanulCo.MAIN = METHOD({
 			uri : 'googlepaymentscsv',
 			target : HanulCo.GooglePaymentsCSV
 		});
+
+		HanulCo.MATCH_VIEW({
+			uri : 'ip',
+			target : HanulCo.GetIP
+		});
 	}
 });

@@ -80,6 +80,22 @@ HanulCo.Home = CLASS({
 							}
 						}
 					})
+				}), LI({
+					style : {
+						flt : 'left',
+						marginRight : 10
+					},
+					c : A({
+						style : COMBINE([itemStyle, {
+							backgroundColor : '#993333'
+						}]),
+						c : 'Get IP',
+						on : {
+							tap : () => {
+								HanulCo.GO('ip');
+							}
+						}
+					})
 				}), CLEAR_BOTH()]
 			}), A({
 				href : 'https://github.com/Hanul/hanul.co',
