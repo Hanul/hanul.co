@@ -57,6 +57,7 @@ HanulCo.IconLaunch = CLASS({
 							let totalCount = 0;
 							let doneCount = 0;
 							
+							// 구글 플레이용
 							EACH([
 								'mdpi',
 								'hdpi',
@@ -146,6 +147,7 @@ HanulCo.IconLaunch = CLASS({
 								};
 							});
 							
+							// 애플 앱스토어용
 							EACH([
 								'iPhoneNotification2x',
 								'iPhoneNotification3x',

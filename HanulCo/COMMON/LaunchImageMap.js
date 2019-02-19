@@ -1,5 +1,15 @@
 HanulCo.LaunchImageMap = {
 	
+	iPhoneXsMax : {
+		width : 1242,
+		height : 2688
+	},
+	
+	iPhoneXr : {
+		width : 828,
+		height : 1792
+	},
+	
 	iPhoneX : {
 		width : 1125,
 		height : 2436
@@ -33,5 +43,20 @@ HanulCo.LaunchImageMap = {
 	iPad2x : {
 		width : 1536,
 		height : 2048
+	},
+	
+	iPadPro105 : {
+		width : 1668,
+		height : 2224
+	},
+	
+	iPadPro11 : {
+		width : 1668,
+		height : 2388
+	},
+	
+	iPadPro129 : {
+		width : 2048,
+		height : 2732
 	}
 };
