@@ -36,7 +36,8 @@ HanulCo.GooglePaymentsCSV = CLASS({
 					
 					GET('__RF/HanulCo/' + fileData.id, (content) => {
 						
-						let str = '';
+						let strs = {};
+						
 						let line = 0;
 						
 						let array = [];
@@ -46,8 +47,7 @@ HanulCo.GooglePaymentsCSV = CLASS({
 							let split = line.split(',');
 							
 							if (i === 0) {
-								str += '일자\t이름\t국가\t종류\t액수 (원)';
-								line += 1;
+								// ignore.
 							}
 							
 							else if (isNaN(split[0]) === true) {
@@ -63,9 +63,22 @@ HanulCo.GooglePaymentsCSV = CLASS({
 						
 						EACH(array, (split, i) => {
 							
+							let name = split[7];
+							let appName = name.substring(name.indexOf('(') + 1);
+							appName = appName.substring(0, appName.indexOf(')'));
+							if (appName === '') {
+								appName = name;
+							}
+							
+							let str = strs[appName];
+							if (str === undefined) {
+								str = appName + '\n일자\t이름\t국가\t종류\t액수 (원)';
+								line += 3;
+							}
+							
 							str += '\n';
 							str += (split[1] + split[2] + ' ' + split[3]).replace(/"/g, '') + '\t';
-							str += split[7] + '\t';
+							str += name + '\t';
 							str += split[12] + '\t';
 							str += split[5] + '\t';
 							str += (isNaN(split[19]) === true ? split[20] : split[19]);
@@ -73,12 +86,21 @@ HanulCo.GooglePaymentsCSV = CLASS({
 							total += REAL(isNaN(split[19]) === true ? split[20] : split[19]);
 							
 							line += 1;
+							
+							strs[appName] = str;
 						});
 						
-						result.setValue(str);
+						let totalStr = '';
+						EACH(strs, (str) => {
+							if (totalStr !== '') {
+								totalStr += '\n\n';
+							}
+							totalStr += str;
+						});
+						result.setValue(totalStr);
 						
 						result.addStyle({
-							height : (line + 1) * 24
+							height : (line + 4) * 24
 						});
 					});
 				}

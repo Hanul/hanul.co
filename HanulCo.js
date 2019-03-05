@@ -14,7 +14,7 @@ BOOT({
 	
 	NODE_CONFIG : {
 		
-		isNotUsingCPUClustering : true,
+		isSingleCoreMode : true,
 		
 		dbName : 'HanulCo'
 	}
