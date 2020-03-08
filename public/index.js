@@ -1,0 +1,2 @@
+functionpush.ready = () => {
+};
