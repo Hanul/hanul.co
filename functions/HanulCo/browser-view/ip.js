@@ -1,0 +1,3 @@
+(params) => {
+	console.log(params);
+};
