@@ -35,5 +35,10 @@ HanulCo.MAIN = METHOD({
 			uri : 'ip',
 			target : HanulCo.GetIP
 		});
+
+		HanulCo.MATCH_VIEW({
+			uri : 'generatemongoid',
+			target : HanulCo.GenerateMongoId
+		});
 	}
 });

@@ -96,6 +96,22 @@ HanulCo.Home = CLASS({
 							}
 						}
 					})
+				}), LI({
+					style : {
+						flt : 'left',
+						marginRight : 10
+					},
+					c : A({
+						style : COMBINE([itemStyle, {
+							backgroundColor : '#13aa52'
+						}]),
+						c : 'Generate Mongo ID',
+						on : {
+							tap : () => {
+								HanulCo.GO('generatemongoid');
+							}
+						}
+					})
 				}), CLEAR_BOTH()]
 			}), A({
 				href : 'https://github.com/Hanul/hanul.co',
