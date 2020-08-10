@@ -40,5 +40,10 @@ HanulCo.MAIN = METHOD({
 			uri : 'generatemongoid',
 			target : HanulCo.GenerateMongoId
 		});
+
+		HanulCo.MATCH_VIEW({
+			uri : 'translatecsv',
+			target : HanulCo.TranslateCSV
+		});
 	}
 });

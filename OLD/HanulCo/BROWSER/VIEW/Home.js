@@ -112,7 +112,23 @@ HanulCo.Home = CLASS({
 							}
 						}
 					})
-				}), CLEAR_BOTH()]
+				})/*, LI({
+					style : {
+						flt : 'left',
+						marginRight : 10
+					},
+					c : A({
+						style : COMBINE([itemStyle, {
+							backgroundColor : '#ff6501'
+						}]),
+						c : 'Translate CSV',
+						on : {
+							tap : () => {
+								HanulCo.GO('translatecsv');
+							}
+						}
+					})
+				})*/, CLEAR_BOTH()]
 			}), A({
 				href : 'https://github.com/Hanul/hanul.co',
 				target : '_blank',
